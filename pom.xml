@@ -10,6 +10,8 @@
         <module>MoBao-Service</module>
         <module>MoBao-Server</module>
         <module>MoBao-WebMain</module>
+        <module>MoBao-Repository</module>
+        <module>MoBao-Rpc</module>
     </modules>
     <name>MoBao Maven Mojo</name>
   <url>http://maven.apache.org</url>

@@ -1,0 +1,4 @@
+com\mo\bao\App.class
+com\mo\bao\spi\impl\StartCommand.class
+com\mo\bao\spi\impl\ShutdownCommand.class
+com\mo\bao\spi\Command.class
