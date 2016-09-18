@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MoBao.iml" filepath="$PROJECT_DIR$/MoBao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" filepath="$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Server/MoBao-Server.iml" filepath="$PROJECT_DIR$/MoBao-Server/MoBao-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Service/MoBao-Service.iml" filepath="$PROJECT_DIR$/MoBao-Service/MoBao-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-WebMain/MoBao-WebMain.iml" filepath="$PROJECT_DIR$/MoBao-WebMain/MoBao-WebMain.iml" />
+    </modules>
+  </component>
+</project>

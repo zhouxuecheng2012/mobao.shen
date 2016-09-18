@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MoBao-WebMain:war">
+    <output-path>$PROJECT_DIR$/MoBao-WebMain/target</output-path>
+    <root id="archive" name="MoBao-WebMain.war">
+      <element id="artifact" artifact-name="MoBao-WebMain:war exploded" />
+    </root>
+  </artifact>
+</component>

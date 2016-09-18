@@ -1,12 +1,15 @@
 package com.mo.bao;
 
+import com.mo.bao.spi.Command;
+import java.util.ServiceLoader;
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println("Hello World!");
-        System.out.println("Hello World!");
+        ServiceLoader<Command> serviceLoader = ServiceLoader.load(Command.class);
+        for (Command command : serviceLoader) {
+            command.execute();
+        }
     }
 }
