@@ -23,6 +23,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="MoBao-Algorithm" />
         <module name="MoBao-Common" />
         <module name="MoBao-Repository" />
         <module name="MoBao-Rpc-Default" />
@@ -31,5 +32,16 @@
         <module name="MoBao-WebMain" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MoBao" target="1.8" />
+      <module name="MoBao-Algorithm" target="1.8" />
+      <module name="MoBao-Common" target="1.8" />
+      <module name="MoBao-Repository" target="1.8" />
+      <module name="MoBao-Rpc" target="1.8" />
+      <module name="MoBao-Rpc-Default" target="1.8" />
+      <module name="MoBao-Server" target="1.8" />
+      <module name="MoBao-Service" target="1.8" />
+      <module name="MoBao-WebMain" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

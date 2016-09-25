@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MoBao.iml" filepath="$PROJECT_DIR$/MoBao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" filepath="$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" filepath="$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Repository/MoBao-Repository.iml" filepath="$PROJECT_DIR$/MoBao-Repository/MoBao-Repository.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc.iml" filepath="$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc.iml" />
