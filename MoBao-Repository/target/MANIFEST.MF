@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: MoBao-Repository
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: hadoop
+Implementation-Vendor-Id: com.mo.bao
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_25
+Main-Class: ${start-class}
+

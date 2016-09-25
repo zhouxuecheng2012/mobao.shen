@@ -18,6 +18,7 @@
         <module>MoBao-Repository</module>
         <module>MoBao-Rpc</module>
         <module>MoBao-Algorithm</module>
+        <module>MoBao-Concurrent</module>
     </modules>
     <name>MoBao Maven Mojo</name>
     <url>http://maven.apache.org</url>
