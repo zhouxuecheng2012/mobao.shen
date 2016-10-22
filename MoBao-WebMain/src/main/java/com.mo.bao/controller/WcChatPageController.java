@@ -3,8 +3,9 @@ package com.mo.bao.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by hadoop on 2016/10/22.
@@ -14,17 +15,26 @@ import org.springframework.web.servlet.ModelAndView;
 public class WcChatPageController {
 
     @GetMapping(value = "/list")
-    public String list() {
+    public String list(HttpServletRequest request, HttpServletResponse response) {
+
+        
+
         return "list";
     }
 
     @GetMapping(value = "/list1")
-    public String list1() {
+    public String list1(HttpServletRequest request, HttpServletResponse response) {
+
+
+
         return "list1";
     }
 
     @GetMapping(value = "/list2")
-    public String list2() {
+    public String list2(HttpServletRequest request, HttpServletResponse response) {
+
+
+
         return "list2";
     }
 
