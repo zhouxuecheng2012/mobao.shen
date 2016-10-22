@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Created by hadoop on 2016/9/25.
  */
 @SpringBootApplication
+@ComponentScan(basePackages = "com.mo.bao.*")
 public class SampleSimpleApplication implements CommandLineRunner {
     @Autowired
     private HelloWorldService helloWorldService;
