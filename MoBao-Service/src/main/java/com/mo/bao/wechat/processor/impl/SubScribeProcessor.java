@@ -20,14 +20,15 @@ public class SubScribeProcessor implements Processor<RequestEventSubscribe> {
         String downloadUrl = "http://dwz.cn/1KU12W";
         String listCtxUrl = "http://dwz.cn/1KTYQ2";
         String writeMatchUrl = "http://dwz.cn/2aOV1V";
+        String testUrl = "http://smwechat.s1.natapp.cc/list";
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Hi，我是小知了，感谢您的关注！/:rose/:rose请为小作家投上您宝贵的一票：");
+        sb.append("Hi，唯分期感谢您的关注！/:rose/:rose请投上您宝贵的一票：");
         sb.append("\n\n");
-        sb.append("第1步：点击【<a href=\"" + userBindUrl + "\">手机验证</a>】，验证手机号");
+        sb.append("第1步：点击【<a href=\"" + testUrl + "\">绑定公众号</a>】");
         sb.append("\n\n");
-        sb.append("第2步：点击【<a href=\"" + writeMatchUrl + "\">作文大赛</a>】，即可投票");
+        sb.append("第2步：点击【<a href=\"" + testUrl + "\">参加抽奖</a>】，即可抽奖");
 
         ResponseText response = new ResponseText();
 

@@ -25,6 +25,8 @@ public interface WeChatActionService extends InitializingBean {
 
     WeChatUserInfo getWeChatUserInfo(String openId);
 
+    String getOpenId(String code);
+
 
 
 

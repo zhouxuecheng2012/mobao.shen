@@ -20,12 +20,14 @@ public class TextProcessor implements Processor<RequestText> {
         String downloadUrl = "http://dwz.cn/1KU12W";
         String listMkActUrl = "http://weixin.kuailezhiliao.com/weixin/ShowMkActList.do";
 
+        String testUrl = "http://smwechat.s1.natapp.cc/list";
+
         ResponseText response = new ResponseText();
 
         response.setToUserName(request.getFromUserName());
         response.setFromUserName(request.getToUserName());
         response.setCreateTime(System.currentTimeMillis());
-        response.setContent("/:rose<a href=\"" + downloadUrl + "\">感谢亲支持【TEST】！</a>");
+        response.setContent("/:rose<a href=\"" + testUrl + "\">感谢亲支持【TEST】！</a>");
 
         String openId = request.getFromUserName();
         String content = request.getContent();

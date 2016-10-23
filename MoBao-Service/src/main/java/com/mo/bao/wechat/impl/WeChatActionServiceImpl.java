@@ -3,11 +3,14 @@ package com.mo.bao.wechat.impl;
 import com.mo.bao.wechat.BaseService;
 import com.mo.bao.wechat.WeChatActionService;
 import com.mo.bao.wechat.weixin.AccessToken;
+import com.mo.bao.wechat.weixin.UserAccessToken;
 import com.mo.bao.wechat.weixin.WeChatUserInfo;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Calendar;
 
 /**
  * Created by hadoop on 2016/10/23.
@@ -125,6 +128,51 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
         System.out.println(response);
 
         return chatUserInfo;
+    }
+
+    @Override
+    public String getOpenId(String code) {
+        UserAccessToken token = getUserAccessToken(code);
+
+        if (token != null) {
+            return token.getOpenId();
+        }
+
+        return null;
+    }
+
+
+    /**
+     * 通过授权code获取用户AccessToken
+     *
+     * @param code
+     *            授权code
+     * @return 用户AccessToken
+     */
+    private UserAccessToken getUserAccessToken(String code) {
+        try {
+            String urlStr = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + APP_ID + "&secret=" + APP_SECRET + "&code=" + code + "&grant_type=authorization_code";
+            String responseStr = getResponse(urlStr, "");
+
+            JSONObject jso = JSONObject.fromObject(responseStr);
+
+            Calendar expire = Calendar.getInstance();
+            expire.add(Calendar.SECOND, jso.getInt("expires_in"));
+
+            UserAccessToken token = new UserAccessToken();
+
+            token.setAccessToken(jso.getString("access_token"));
+            token.setExpire(expire);
+            token.setRefreshToken(jso.getString("refresh_token"));
+            token.setOpenId(jso.getString("openid"));
+            token.setScope(jso.getString("scope"));
+
+            return token;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private AccessToken fetchJsapiTicket() {
