@@ -1,12 +1,14 @@
 package com.mo.bao.wechat.weixin;
 
+import java.io.Serializable;
+
 /**
  * jsapi 签名
  *
  * @author Xi Xiaohui
  *
  */
-public class JsapiSign {
+public class JsapiSign implements Serializable {
 	private String	appId;
 	private String	timestamp;
 	private String	nonceStr;

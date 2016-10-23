@@ -1,8 +1,9 @@
 package com.mo.bao.wechat.weixin;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class UserAccessToken {
+public class UserAccessToken implements Serializable {
 	private String		accessToken;
 	private Calendar	expire;
 	private String		refreshToken;

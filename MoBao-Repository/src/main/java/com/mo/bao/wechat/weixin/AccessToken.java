@@ -1,6 +1,8 @@
 package com.mo.bao.wechat.weixin;
 
-public class AccessToken {
+import java.io.Serializable;
+
+public class AccessToken implements Serializable{
 	private String	appId;
 	private String	accessToken;
 	private Long	expire;

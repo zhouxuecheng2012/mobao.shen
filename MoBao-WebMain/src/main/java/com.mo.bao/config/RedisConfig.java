@@ -1,5 +1,6 @@
 package com.mo.bao.config;
 
+import com.mo.bao.wechat.weixin.AccessToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -24,8 +25,8 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+    public RedisTemplate<String, AccessToken> redisTemplate(RedisConnectionFactory factory) {
+        RedisTemplate<String, AccessToken> template = new RedisTemplate<String, AccessToken>();
         template.setConnectionFactory(jedisConnectionFactory());
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new RedisObjectSerializer());
