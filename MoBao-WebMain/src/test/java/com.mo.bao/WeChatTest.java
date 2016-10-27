@@ -42,7 +42,7 @@ public class WeChatTest {
             while ((line = in.readLine()) != null) {
                 result += line;
             }
-
+            in.close();
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,14 +106,8 @@ public class WeChatTest {
         System.out.println(response);
     }
 
-    private static void createTemplate(){
 
-    }
-
-
-    public static void main(String[] args){
-
-        String accessToken = "xB2rAe9mQATISbPbOf3wN-qXOVunVtha52nBbcsktxWQYQygQqTJu5yK8Jbk_4ZSXrYBsiG92H3-szjFoQHyUSTmaL1ii-Vmou44dCNOBvl3cLOWhxnguPnlecVkRGgKUUYiAIAKKO";
+    private static void createTemplate(String accessToken){
 
 
         String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + accessToken + "";
@@ -147,6 +141,29 @@ public class WeChatTest {
                 "       }");
 
         System.out.println(response);
+    }
+
+    private static final String appID = "wx0672e57188e245a5";
+    private static final String appsecret = "7f2ba0e49870d080dabac46d7a19fc42";
+
+    private static String getAccessToken(){
+        String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+appID+"&secret="+appsecret+"";
+
+        String response = getResponse(url,"");
+        System.out.println(response);
+
+        return response;
+    }
+
+    private static String accessToken_all ;
+
+    public static void main(String[] args) throws InterruptedException {
+         //String accessToken = "gAX77s4YdITQnZF5chkpR8KpO8FQoZaSH5F4J-NnSKqMMSF5eBe08CGkjtnemQ1z1XXqUJf1Db9yutctNe-Sw9Jn8onGMI13JPdodmU2ob5_NEWNfhAjHuHqyIrCcfpeDNVfACAVFN";
+         //String accessToken = "UMH4nOp2JUEdRe7dI-CYib0seC1XpYKFEeyDzawSq8UKDLheTkXzmQ5a3IgFQ-lOOjLclJfy2fMJH0GdP7cmTbOzK5CZMirtn85JK_qRCYAVQKfAAAKFZ";
+          String accessToken = getAccessToken();
+         //Thread.sleep(60000);
+         //createTemplate(accessToken);
+          //sendAllMsg(accessToken);
     }
 
 }

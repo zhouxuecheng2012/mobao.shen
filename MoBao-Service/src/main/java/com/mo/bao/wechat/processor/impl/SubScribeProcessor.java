@@ -20,7 +20,7 @@ public class SubScribeProcessor implements Processor<RequestEventSubscribe> {
         String downloadUrl = "http://dwz.cn/1KU12W";
         String listCtxUrl = "http://dwz.cn/1KTYQ2";
         String writeMatchUrl = "http://dwz.cn/2aOV1V";
-        String testUrl = "http://smwechat.s1.natapp.cc/list";
+        String testUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0672e57188e245a5&redirect_uri=http://smwechat.s1.natapp.cc/list&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
 
         StringBuilder sb = new StringBuilder();
 

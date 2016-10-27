@@ -28,7 +28,7 @@ public class WeChatController {
 
     private static final String WE_CHAT_POST = "POST";
 
-    @RequestMapping(value = {"/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = {"/weChatServer"}, method = {RequestMethod.GET, RequestMethod.POST})
     String home(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String resultStr = null;
