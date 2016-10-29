@@ -143,34 +143,6 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
     }
 
 
-    @Override
-    public AccessToken getJsapiTicket() {
-        AccessToken token = objectRedisTemplate.opsForValue().get(jsapi_ticket_key);
-
-        boolean fetch = false;
-
-        if (token == null ){
-            fetch = true;
-        } else {
-            if (token.getExpire().longValue() < System.currentTimeMillis()) {
-                fetch = true;
-            }
-        }
-
-        if (fetch) {
-            token = fetchJsapiTicket();
-
-            if (token != null) {
-
-                objectRedisTemplate.opsForValue().set(access_token_key,token);
-            }
-
-        }
-
-        return token;
-    }
-
-
     /**
      * 通过授权code获取用户AccessToken
      *

@@ -1,10 +1,12 @@
 package com.mo.bao.controller;
 
 import com.mo.bao.wechat.WeChatActionService;
+import com.mo.bao.wechat.WeChatService;
+import com.mo.bao.wechat.weixin.AccessToken;
+import com.mo.bao.wechat.weixin.JsapiSign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +20,9 @@ public class WcChatPageController {
     @Autowired
     private WeChatActionService chatActionService;
 
+    @Autowired
+    private WeChatService weChatService;
+
     @GetMapping(value = "/list")
     public String list(HttpServletRequest request, HttpServletResponse response) {
         String url = request.getRequestURL().toString();
@@ -27,7 +32,9 @@ public class WcChatPageController {
 
         String openId = chatActionService.getOpenId(code);
         System.out.println(openId);
-
+        AccessToken jsApiToke  = chatActionService.getJsApiTicket();
+        JsapiSign jsapiSign = weChatService.genJsapiSign(jsApiToke,request);
+        System.out.println(jsapiSign);
         return "list";
     }
 

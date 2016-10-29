@@ -29,7 +29,6 @@ public interface WeChatActionService extends InitializingBean {
 
     String getOpenId(String code);
 
-    AccessToken getJsapiTicket();
 
 
 

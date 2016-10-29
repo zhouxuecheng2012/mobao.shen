@@ -54,4 +54,16 @@ public class JsapiSign implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "JsapiSign{" +
+				"appId='" + appId + '\'' +
+				", timestamp='" + timestamp + '\'' +
+				", nonceStr='" + nonceStr + '\'' +
+				", signature='" + signature + '\'' +
+				", url='" + url + '\'' +
+				'}';
+	}
 }
+

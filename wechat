@@ -44,3 +44,9 @@ expire = {Long@6526} "1477268287496"
 
 
 mtVxHMerDzp8NKd037nsczOMEynJrR_MpOMoRGC3v-8
+
+JsapiSign{appId='wx0672e57188e245a5', timestamp='1477744592',
+nonceStr='a4f1785e-004d-460d-8a94-8b386e841e78',
+signature='851e9c3db616e830ed699ccef0cd755614caa805',
+url='http://localhost:8080/list?
+code=031aXaAp1r8E5o02oDDp1fQ5Ap1aXaAr&state=1'}
