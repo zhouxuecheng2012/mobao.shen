@@ -1,15 +1,16 @@
 package com.mo.bao.wechat.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mo.bao.wechat.BaseService;
 import com.mo.bao.wechat.WeChatActionService;
 import com.mo.bao.wechat.weixin.AccessToken;
 import com.mo.bao.wechat.weixin.UserAccessToken;
 import com.mo.bao.wechat.weixin.WeChatUserInfo;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 
 /**
@@ -67,10 +68,10 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
             return null;
         }
 
-        JSONObject jso = JSONObject.fromObject(response);
+        JSONObject jso = JSONObject.parseObject(response);
 
         if (!jso.containsKey("access_token")) {
-            int errorcode = jso.getInt("errcode");
+            int errorcode = jso.getInteger("errcode");
             String errormsg = jso.getString("errmsg");
 
             System.out.println("error(" + errorcode + "):" + errormsg);
@@ -81,7 +82,7 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
         AccessToken token = new AccessToken();
 
         token.setAccessToken(jso.getString("access_token"));
-        token.setExpire(System.currentTimeMillis() + jso.getInt("expires_in") * 1000L);
+        token.setExpire(System.currentTimeMillis() + jso.getInteger("expires_in") * 1000L);
         token.setAppId(APP_ID);
 
         System.out.println("token:" + token.getAccessToken() + ",expire:" + token.getExpire());
@@ -142,6 +143,34 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
     }
 
 
+    @Override
+    public AccessToken getJsapiTicket() {
+        AccessToken token = objectRedisTemplate.opsForValue().get(jsapi_ticket_key);
+
+        boolean fetch = false;
+
+        if (token == null ){
+            fetch = true;
+        } else {
+            if (token.getExpire().longValue() < System.currentTimeMillis()) {
+                fetch = true;
+            }
+        }
+
+        if (fetch) {
+            token = fetchJsapiTicket();
+
+            if (token != null) {
+
+                objectRedisTemplate.opsForValue().set(access_token_key,token);
+            }
+
+        }
+
+        return token;
+    }
+
+
     /**
      * 通过授权code获取用户AccessToken
      *
@@ -154,10 +183,10 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
             String urlStr = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + APP_ID + "&secret=" + APP_SECRET + "&code=" + code + "&grant_type=authorization_code";
             String responseStr = getResponse(urlStr, "");
 
-            JSONObject jso = JSONObject.fromObject(responseStr);
+            JSONObject jso = JSONObject.parseObject(responseStr);
 
             Calendar expire = Calendar.getInstance();
-            expire.add(Calendar.SECOND, jso.getInt("expires_in"));
+            expire.add(Calendar.SECOND, jso.getInteger("expires_in"));
 
             UserAccessToken token = new UserAccessToken();
 
@@ -194,13 +223,13 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
             return null;
         }
 
-        JSONObject jso = JSONObject.fromObject(response);
+        JSONObject jso = JSONObject.parseObject(response);
 
         try {
-            int errorcode = jso.getInt("errcode");
+            int errorcode = jso.getInteger("errcode");
             String errormsg = jso.getString("errmsg");
             String ticket = jso.getString("ticket");
-            int expire = jso.getInt("expires_in");
+            int expire = jso.getInteger("expires_in");
 
             if (errorcode == 0) {
                 AccessToken token = new AccessToken();

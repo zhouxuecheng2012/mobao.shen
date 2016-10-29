@@ -20,7 +20,8 @@ public class WcChatPageController {
 
     @GetMapping(value = "/list")
     public String list(HttpServletRequest request, HttpServletResponse response) {
-
+        String url = request.getRequestURL().toString();
+        System.out.println(url);
         String code = request.getParameter("code");
         System.out.println(code);
 

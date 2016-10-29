@@ -4,6 +4,8 @@ import com.mo.bao.wechat.weixin.AccessToken;
 import com.mo.bao.wechat.weixin.WeChatUserInfo;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by hadoop on 2016/10/23.
  */
@@ -27,6 +29,7 @@ public interface WeChatActionService extends InitializingBean {
 
     String getOpenId(String code);
 
+    AccessToken getJsapiTicket();
 
 
 
