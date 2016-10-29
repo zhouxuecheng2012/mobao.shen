@@ -60,6 +60,4 @@ public class WcChatPageController {
         return "list2";
     }
 
-
-
 }
