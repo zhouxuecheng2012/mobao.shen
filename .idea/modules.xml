@@ -6,8 +6,10 @@
       <module fileurl="file://$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" filepath="$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" filepath="$PROJECT_DIR$/MoBao-Common/MoBao-Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Concurrent/MoBao-Concurrent.iml" filepath="$PROJECT_DIR$/MoBao-Concurrent/MoBao-Concurrent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Model/MoBao-Model.iml" filepath="$PROJECT_DIR$/MoBao-Model/MoBao-Model.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Repository/MoBao-Repository.iml" filepath="$PROJECT_DIR$/MoBao-Repository/MoBao-Repository.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc.iml" filepath="$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc-Api/MoBao-Rpc-Api.iml" filepath="$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc-Api/MoBao-Rpc-Api.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc-Default/MoBao-Rpc-Default.iml" filepath="$PROJECT_DIR$/MoBao-Rpc/MoBao-Rpc-Default/MoBao-Rpc-Default.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Server/MoBao-Server.iml" filepath="$PROJECT_DIR$/MoBao-Server/MoBao-Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Service/MoBao-Service.iml" filepath="$PROJECT_DIR$/MoBao-Service/MoBao-Service.iml" />

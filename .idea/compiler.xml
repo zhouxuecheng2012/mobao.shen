@@ -26,7 +26,9 @@
         <module name="MoBao-Algorithm" />
         <module name="MoBao-Common" />
         <module name="MoBao-Concurrent" />
+        <module name="MoBao-Model" />
         <module name="MoBao-Repository" />
+        <module name="MoBao-Rpc-Api" />
         <module name="MoBao-Rpc-Default" />
         <module name="MoBao-Server" />
         <module name="MoBao-Service" />
@@ -38,8 +40,10 @@
       <module name="MoBao-Algorithm" target="1.8" />
       <module name="MoBao-Common" target="1.8" />
       <module name="MoBao-Concurrent" target="1.8" />
+      <module name="MoBao-Model" target="1.8" />
       <module name="MoBao-Repository" target="1.8" />
       <module name="MoBao-Rpc" target="1.8" />
+      <module name="MoBao-Rpc-Api" target="1.8" />
       <module name="MoBao-Rpc-Default" target="1.8" />
       <module name="MoBao-Server" target="1.8" />
       <module name="MoBao-Service" target="1.8" />

@@ -1,1 +1,15 @@
+com\mo\bao\wechat\RequestCodec.class
+com\mo\bao\wechat\impl\WeChatActionServiceImpl.class
+com\mo\bao\wechat\processor\impl\SubScribeProcessor.class
+com\mo\bao\wechat\RequestProcessorFactory.class
+com\mo\bao\wechat\processor\impl\ViewProcessor.class
+com\mo\bao\wechat\WeChatMessageService.class
+com\mo\bao\wechat\processor\impl\TextProcessor.class
+com\mo\bao\wechat\processor\impl\ClickProcessor.class
+com\mo\bao\wechat\impl\WeChatMessageServiceImpl.class
+com\mo\bao\wechat\processor\Processor.class
+com\mo\bao\wechat\BaseService.class
+com\mo\bao\wechat\WeChatService.class
+com\mo\bao\wechat\WeChatActionService.class
 com\mo\bao\App.class
+com\mo\bao\wechat\impl\WeChatServiceImpl.class

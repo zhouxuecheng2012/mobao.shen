@@ -1,1 +1,14 @@
+com\mo\bao\wechat\ResponseBase.class
+com\mo\bao\wechat\response\ResponseText.class
+com\mo\bao\wechat\weixin\WeChatUserInfo.class
+com\mo\bao\wechat\request\event\RequestEventClick.class
+com\mo\bao\wechat\weixin\JsapiSign.class
+com\mo\bao\wechat\RequestBase.class
+com\mo\bao\wechat\request\event\RequestEventView.class
+com\mo\bao\wechat\weixin\AccessToken.class
+com\mo\bao\wechat\request\event\RequestEventSubscribe.class
+com\mo\bao\wechat\request\event\RequestEventUnsubscribe.class
+com\mo\bao\wechat\request\RequestEventBase.class
 com\mo\bao\App.class
+com\mo\bao\wechat\request\RequestText.class
+com\mo\bao\wechat\weixin\UserAccessToken.class

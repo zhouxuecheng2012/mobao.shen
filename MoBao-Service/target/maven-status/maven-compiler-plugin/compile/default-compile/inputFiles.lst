@@ -1,1 +1,15 @@
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\impl\WeChatActionServiceImpl.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\RequestProcessorFactory.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\impl\WeChatServiceImpl.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\WeChatService.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\RequestCodec.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\impl\WeChatMessageServiceImpl.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\WeChatActionService.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\BaseService.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\WeChatMessageService.java
 E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\App.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\processor\impl\SubScribeProcessor.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\processor\impl\TextProcessor.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\processor\Processor.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\processor\impl\ViewProcessor.java
+E:\StartDevelop\mobao.shen\MoBao-Service\src\main\java\com\mo\bao\wechat\processor\impl\ClickProcessor.java
