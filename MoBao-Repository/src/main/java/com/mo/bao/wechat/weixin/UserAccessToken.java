@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class UserAccessToken implements Serializable {
+	private static final long serialVersionUID = 2958812166112679599L;
 	private String		accessToken;
 	private Calendar	expire;
 	private String		refreshToken;

@@ -1,7 +1,8 @@
 package com.mo.bao;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -62,7 +63,7 @@ public class WeChatTest {
         JSONObject subJsonObject = new JSONObject();
         subJsonObject.put("type","view");
         subJsonObject.put("name","唯分期申请");
-        subJsonObject.put("url","https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0672e57188e245a5&redirect_uri=http://smwechat.s1.natapp.cc/list&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
+        subJsonObject.put("url","https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0672e57188e245a5&redirect_uri=http://smwechat.s1.natapp.cc/list&response_type=code&scope=snsapi_userinfo&state=1&&connect_redirect=1");
 
         jsonArray.add(subJsonObject);
 
@@ -161,9 +162,12 @@ public class WeChatTest {
          //String accessToken = "gAX77s4YdITQnZF5chkpR8KpO8FQoZaSH5F4J-NnSKqMMSF5eBe08CGkjtnemQ1z1XXqUJf1Db9yutctNe-Sw9Jn8onGMI13JPdodmU2ob5_NEWNfhAjHuHqyIrCcfpeDNVfACAVFN";
          //String accessToken = "UMH4nOp2JUEdRe7dI-CYib0seC1XpYKFEeyDzawSq8UKDLheTkXzmQ5a3IgFQ-lOOjLclJfy2fMJH0GdP7cmTbOzK5CZMirtn85JK_qRCYAVQKfAAAKFZ";
           String accessToken = getAccessToken();
+          JSONObject object = (JSONObject) JSON.parse(accessToken);
+          String access_Token = object.getString("access_token");
          //Thread.sleep(60000);
          //createTemplate(accessToken);
           //sendAllMsg(accessToken);
+        createMenu("QK73FZGF9YZc_-8JTqBnpIg-goj385RTASPViWoTnqPXZ8x5jCEeIahDHfM4Aen_Qub2lYKftlzjbPKn_lUIEPEPlRbwylq1ZuqNTgHWIQi8iKmoAf7dTsr380pEai1XODZbAHASHD");
     }
 
 }

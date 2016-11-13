@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class WeChatUserInfo implements Serializable {
 
 
+    private static final long serialVersionUID = 3554660216568104615L;
     private Integer subscribe;
 
     private String openid;

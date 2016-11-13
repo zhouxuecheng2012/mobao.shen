@@ -9,6 +9,7 @@ import java.io.Serializable;
  *
  */
 public class JsapiSign implements Serializable {
+	private static final long serialVersionUID = -5496967170932427071L;
 	private String	appId;
 	private String	timestamp;
 	private String	nonceStr;

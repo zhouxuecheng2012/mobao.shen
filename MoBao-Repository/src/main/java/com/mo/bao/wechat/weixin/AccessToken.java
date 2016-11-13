@@ -3,6 +3,9 @@ package com.mo.bao.wechat.weixin;
 import java.io.Serializable;
 
 public class AccessToken implements Serializable{
+
+
+	private static final long serialVersionUID = 7454843994308630023L;
 	private String	appId;
 	private String	accessToken;
 	private Long	expire;
@@ -29,5 +32,14 @@ public class AccessToken implements Serializable{
 
 	public void setExpire(Long expire) {
 		this.expire = expire;
+	}
+
+	@Override
+	public String toString() {
+		return "AccessToken{" +
+				"appId='" + appId + '\'' +
+				", accessToken='" + accessToken + '\'' +
+				", expire=" + expire +
+				'}';
 	}
 }

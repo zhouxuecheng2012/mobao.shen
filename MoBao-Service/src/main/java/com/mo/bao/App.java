@@ -1,7 +1,7 @@
 package com.mo.bao;
 
 
-import com.mo.bao.cache.CacheManager;
+import com.mo.bao.cache.redis.CacheManager;
 
 /**
  * Hello world!

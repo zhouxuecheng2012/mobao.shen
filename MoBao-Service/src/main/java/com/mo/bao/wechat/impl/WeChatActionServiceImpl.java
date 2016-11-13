@@ -52,7 +52,7 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
             }
 
         }
-
+        System.out.println("access:"+accessToken);
         return accessToken;
     }
 
@@ -114,7 +114,7 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
             }
 
         }
-
+        System.out.println("JS:"+accessToken);
         return accessToken;
     }
 
@@ -154,7 +154,7 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
         try {
             String urlStr = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + APP_ID + "&secret=" + APP_SECRET + "&code=" + code + "&grant_type=authorization_code";
             String responseStr = getResponse(urlStr, "");
-
+            System.out.println(responseStr);
             JSONObject jso = JSONObject.parseObject(responseStr);
 
             Calendar expire = Calendar.getInstance();
