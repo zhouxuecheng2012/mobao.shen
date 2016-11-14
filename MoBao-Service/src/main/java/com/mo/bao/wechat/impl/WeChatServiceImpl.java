@@ -144,7 +144,7 @@ public class WeChatServiceImpl implements WeChatService {
      * @return jsapi签名
      */
     public JsapiSign genJsapiSign(AccessToken jsapi_ticket, HttpServletRequest request) {
-        String url = request.getRequestURL().toString();
+        String url = "http://smwechat.s1.natapp.cc";
 
         if (request.getQueryString() != null) {
             url += ("?" + request.getQueryString());

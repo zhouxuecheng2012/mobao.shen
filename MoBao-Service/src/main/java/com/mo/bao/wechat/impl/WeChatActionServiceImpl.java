@@ -1,5 +1,6 @@
 package com.mo.bao.wechat.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mo.bao.wechat.BaseService;
 import com.mo.bao.wechat.WeChatActionService;
@@ -142,6 +143,22 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
         return null;
     }
 
+    @Override
+    public WeChatUserInfo getUserInfoByUserToken(String code) {
+        UserAccessToken token = getUserAccessToken(code);
+        String urlstr = "https://api.weixin.qq.com/sns/userinfo?access_token="+token.getAccessToken()+"&openid="+token.getOpenId()+"&lang=zh_CN ";
+        String response = getResponse(urlstr, "");
+        System.out.println(response);
+        JSONObject jsonObject =JSONObject.parseObject(response);
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.add("111");
+        jsonArray.add("222");
+        jsonObject.put("privilege",jsonArray);
+        response = jsonObject.toJSONString();
+        WeChatUserInfo userInfo = JSONObject.parseObject(response,WeChatUserInfo.class);
+        return userInfo;
+    }
+
 
     /**
      * 通过授权code获取用户AccessToken
@@ -154,7 +171,7 @@ public class WeChatActionServiceImpl extends BaseService implements WeChatAction
         try {
             String urlStr = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + APP_ID + "&secret=" + APP_SECRET + "&code=" + code + "&grant_type=authorization_code";
             String responseStr = getResponse(urlStr, "");
-            System.out.println(responseStr);
+            System.out.println("getUserAccessToken:"+responseStr);
             JSONObject jso = JSONObject.parseObject(responseStr);
 
             Calendar expire = Calendar.getInstance();

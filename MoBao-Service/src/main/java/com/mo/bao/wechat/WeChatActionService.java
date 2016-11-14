@@ -1,6 +1,7 @@
 package com.mo.bao.wechat;
 
 import com.mo.bao.wechat.weixin.AccessToken;
+import com.mo.bao.wechat.weixin.UserAccessToken;
 import com.mo.bao.wechat.weixin.WeChatUserInfo;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -30,6 +31,6 @@ public interface WeChatActionService extends InitializingBean {
     String getOpenId(String code);
 
 
-
+    WeChatUserInfo getUserInfoByUserToken(String code);
 
 }
