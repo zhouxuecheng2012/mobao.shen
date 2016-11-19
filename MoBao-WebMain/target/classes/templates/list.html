@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
 
+_initWchat = function() {
+    wx.config({
+        debug: true,
+        appId: 'wx0672e57188e245a5',
+        timestamp: 1479164880,
+        nonceStr: 'b4bf0db9-f867-4e22-b15a-5a0b0856b915',
+        signature: 'a9a2d1d7609bee54852b6d4114a0fc5f06b8b238',
+        jsApiList: [
+            'hideMenuItems',
+            'hideAllNonBaseMenuItem',
+            'hideOptionMenu'
+        ]
+    });
+
+    wx.ready(function() {
+    });
+
+    wx.error(function(res) {
+        console.log(res);
+    });
+
+};
+_initWchat();
+
+
+    </script>
 </head>
 <body>
-    list page
+list page
 </body>
 </html>

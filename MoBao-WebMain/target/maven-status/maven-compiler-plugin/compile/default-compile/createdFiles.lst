@@ -1,7 +1,10 @@
+com\mo\bao\controller\WelcomeController.class
 com\mo\bao\service\HelloWorldService.class
 com\mo\bao\controller\WeChatController.class
 com\mo\bao\config\RedisConfig$RedisObjectSerializer.class
 com\mo\bao\config\RedisConfig.class
 com\mo\bao\ExitException.class
+com\mo\bao\controller\MyException.class
 com\mo\bao\controller\WcChatPageController.class
+com\mo\bao\controller\MyRestResponse.class
 com\mo\bao\SampleSimpleApplication.class

@@ -1,6 +1,9 @@
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\config\RedisConfig.java
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\controller\WeChatController.java
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\ExitException.java
+E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\controller\MyRestResponse.java
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\SampleSimpleApplication.java
+E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\controller\MyException.java
+E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\controller\WelcomeController.java
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\controller\WcChatPageController.java
 E:\StartDevelop\mobao.shen\MoBao-WebMain\src\main\java\com.mo.bao\service\HelloWorldService.java

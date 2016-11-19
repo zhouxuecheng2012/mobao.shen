@@ -10,10 +10,9 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Created by hadoop on 2016/9/25.
  */
-@SpringBootApplication
-@ComponentScan(basePackages = "com.mo.bao.*")
+
 public class SampleSimpleApplication implements CommandLineRunner {
-    @Autowired
+
     private HelloWorldService helloWorldService;
 
 
