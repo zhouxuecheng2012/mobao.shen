@@ -4,6 +4,7 @@ import com.mo.bao.wechat.WeChatMessageService;
 import com.mo.bao.wechat.WeChatService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import java.io.PrintWriter;
 /**
  * Created by hadoop on 2016/10/22.
  */
-@RestController
+@Controller
 public class WeChatController {
 
     @Autowired
@@ -29,7 +30,7 @@ public class WeChatController {
     private static final String WE_CHAT_POST = "POST";
 
     @RequestMapping(value = {"/weChatServer"}, method = {RequestMethod.GET, RequestMethod.POST})
-    String home(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void home(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String resultStr = null;
 
@@ -47,12 +48,14 @@ public class WeChatController {
 
             // 随机字符串
             String echostr = request.getParameter("echostr");
+            System.out.println(timestamp+"======"+nonce+"====="+signature+"==="+echostr);
 
             if (StringUtils.isNotEmpty(signature)  && StringUtils.isNotEmpty(timestamp)
                     && StringUtils.isNotEmpty(nonce) && weChatService.checkSignature(signature,timestamp,nonce)) {
                 resultStr = echostr;
                 System.out.println("[RESPONSE]");
                 System.out.println(echostr);
+                responseString(echostr,response);
             }
         } else if (WE_CHAT_POST.equals(method)){
 
@@ -72,7 +75,7 @@ public class WeChatController {
             }
 
             System.out.println("[POST]");
-            System.out.println(sb.toString());
+            //System.out.println(sb.toString());
 
             response.setContentType("text/html;charset=UTF-8");
 
@@ -87,17 +90,32 @@ public class WeChatController {
             out.close();
             out = null;
 
-            System.out.println("[RESPONSE]");
-            System.out.println(responseStr);
+            //System.out.println("[RESPONSE]");
+            //System.out.println(responseStr);
 
         }
 
-        return resultStr;
+
     }
 
-
-
-
-
+    private void responseString(String data, HttpServletResponse response) {
+        response.setContentType("text/plain; charset=UTF-8");
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        PrintWriter pw = null;
+        try {
+            pw = response.getWriter();
+            pw.write(data);
+        } catch (IOException e) {
+            //logger.error(e.getMessage(), e);
+        } finally {
+            if (pw != null) {
+                pw.flush();
+                pw.close();
+            }
+        }
+    }
 
 }

@@ -1,6 +1,6 @@
 com\mo\bao\sequence\AbstractSequenceManager.class
 com\mo\bao\spi\impl\StartCommand.class
+com\mo\bao\cache\redis\CacheManager.class
 com\mo\bao\App.class
-com\mo\bao\cache\CacheManager.class
 com\mo\bao\spi\impl\ShutdownCommand.class
 com\mo\bao\spi\Command.class
