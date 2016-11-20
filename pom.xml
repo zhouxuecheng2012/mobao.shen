@@ -20,6 +20,7 @@
         <module>MoBao-Algorithm</module>
         <module>MoBao-Concurrent</module>
         <module>MoBao-Model</module>
+        <module>MoBao-Redis</module>
     </modules>
     <name>MoBao Maven Mojo</name>
     <url>http://maven.apache.org</url>
