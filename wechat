@@ -50,3 +50,10 @@ nonceStr='a4f1785e-004d-460d-8a94-8b386e841e78',
 signature='851e9c3db616e830ed699ccef0cd755614caa805',
 url='http://localhost:8080/list?
 code=031aXaAp1r8E5o02oDDp1fQ5Ap1aXaAr&state=1'}
+
+d;Nr-4nII<ph
+UPDATE user SET password = PASSWORD('123456') WHERE user = 'root';
+update  user set authentication_string=password('123456') where user='root';
+update mysql.user set authentication_string=password('123456') where user='root' and Host = 'localhost';
+alter user 'root'@'localhost' identified by '123456';
+set password for 'root'@'localhost'=password('123456');
