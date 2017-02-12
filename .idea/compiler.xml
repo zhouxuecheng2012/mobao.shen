@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="MoBao-Akka" />
         <module name="MoBao-Algorithm" />
         <module name="MoBao-Common" />
         <module name="MoBao-Concurrent" />
@@ -37,6 +38,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MoBao" target="1.8" />
+      <module name="MoBao-Akka" target="1.8" />
       <module name="MoBao-Algorithm" target="1.8" />
       <module name="MoBao-Common" target="1.8" />
       <module name="MoBao-Concurrent" target="1.8" />

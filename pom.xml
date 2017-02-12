@@ -21,6 +21,7 @@
         <module>MoBao-Concurrent</module>
         <module>MoBao-Model</module>
         <module>MoBao-Redis</module>
+        <module>MoBao-Akka</module>
     </modules>
     <name>MoBao Maven Mojo</name>
     <url>http://maven.apache.org</url>
