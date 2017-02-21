@@ -7,7 +7,6 @@ import akka.actor.UntypedActor;
 /**
  * Created by hadoop on 2017/2/14.
  * UntypedActorContext
- *
  */
 public class HelloWorld extends UntypedActor {
 
@@ -15,17 +14,17 @@ public class HelloWorld extends UntypedActor {
 
     @Override
     public void preStart() throws Exception {
-        greeter = getContext().actorOf(Props.create(Greeter.class),"greeter");
-        System.out.println("Greeter Actor Path:"+greeter.path());
-        greeter.tell(Greeter.Msg.GREET,getSelf());
+        greeter = getContext().actorOf(Props.create(Greeter.class), "greeter");
+        System.out.println("Greeter Actor Path:" + greeter.path());
+        greeter.tell(Greeter.Msg.GREET, getSelf());
     }
 
     @Override
     public void onReceive(Object msg) throws Throwable {
         if (msg == Greeter.Msg.DONE) {
-            greeter.tell(Greeter.Msg.GREET,getSelf());
+            greeter.tell(Greeter.Msg.GREET, getSelf());
             getContext().stop(getSelf());
-        }else {
+        } else {
             unhandled(msg);
         }
     }
