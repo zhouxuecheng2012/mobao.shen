@@ -1,0 +1,26 @@
+# *** IMPORTANT ***
+#
+# By default Sentinel will not be reachable from interfaces different than
+# localhost, either use the 'bind' directive to bind to a list of network
+# interfaces, or disable protected mode with "protected-mode no" by
+# adding it to this configuration file.
+#
+# Before doing that MAKE SURE the instance is protected from the outside
+# world via firewalling or other means.
+#
+# For example you may use one of the following:
+#
+bind 192.168.31.83
+
+redis-sentinel /etc/sentinal/5000.conf
+redis-server /etc/sentinal/5000.conf --sentinel
+
+4、检查哨兵状态
+
+redis-cli -h 192.168.31.187 -p 5000
+
+sentinel master mymaster
+SENTINEL slaves mymaster
+SENTINEL sentinels mymaster
+
+SENTINEL get-master-addr-by-name mymaster
