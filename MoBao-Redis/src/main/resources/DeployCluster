@@ -1,4 +1,3 @@
-
 redis cluster最最基础的一些知识
 redis cluster: 自动，master+slave复制和读写分离，master+slave高可用和主备切换，
 支持多个master的hash slot支持数据分布式存储
@@ -54,9 +53,38 @@ wget http://rubygems.org/downloads/redis-3.3.0.gem
 gem install -l ./redis-3.3.0.gem
 gem list --check redis gem
 
+cp /usr/local/redis-3.2.8/src/redis-trib.rb /usr/local/bin
 
-
+redis-trib.rb create --replicas 1 192.168.31.81:7001 192.168.31.81:7002 192.168.31.82:7003 192.168.31.82:7004 192.168.31.83:7005 192.168.31.83:7006
 
 4、读写分离+高可用+多master
+
+1、实验多master写入 -> 海量数据的分布式存储
+jedis cluster api，就可以自动针对多个master进行写入和读取
+2、实验不同master各自的slave读取 -> 读写分离
+(1)在这个redis cluster中，如果你要在slave读取数据，那么需要带上readonly指令，get mykey1
+(2)redis-cli -c启动，就会自动进行各种底层的重定向的操作
+(3)实验redis cluster的读写分离的时候，会发现有一定的限制性，默认情况下，redis cluster的核心的理念，
+   主要是用slave做高可用的，每个master挂一两个slave，主要是做数据的热备，还有master故障时的主备切换，
+   实现高可用的
+(4)redis cluster默认是不支持slave节点读或者写的，跟我们手动基于replication搭建的主从架构不一样的,
+slave node，readonly，get，这个时候才能在slave node进行读取
+(5)redis cluster，主从架构是出来，读写分离，复杂了点，也可以做，jedis客户端，
+   对redis cluster的读写分离支持不太好的
+   默认的话就是读和写都到master上去执行的
+(6)如果你要让最流行的jedis做redis cluster的读写分离的访问，那可能还得自己修改一点jedis的源码，成本比较高
+   要不然你就是自己基于jedis，封装一下，自己做一个redis cluster的读写分离的访问api
+(7)
+3、实验自动故障切换 -> 高可用性
+
+redis-trib.rb check 192.168.31.187:7001
+
+比如把master1，187:7001，杀掉，看看它对应的19:7004能不能自动切换成master，可以自动切换
+
+切换成master后的19:7004，可以直接读取数据
+
+再试着把187:7001给重新启动，恢复过来，自动作为slave挂载到了19:7004上面去
+
+redis-trib.rb
 
 

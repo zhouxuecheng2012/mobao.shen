@@ -1,0 +1,61 @@
+
+1、加入新master
+port
+cluster-enabled yes
+cluster-config-file /etc/redis-cluster/node-7007.conf
+cluster-node-timeout 15000
+
+daemonize	yes
+pidfile		/var/run/redis_7007.pid
+dir 		/var/redis/7007
+logfile /var/log/redis/7007.log
+bind 192.168.31.227
+appendonly yes
+redis-trib.rb add-node 192.168.31.83:7007 192.168.31.81:7001
+redis-trib.rb check 192.168.31.81:7001
+连接到新的redis实例上，cluster nodes，确认自己是否加入了集群，作为了一个新的master
+add-node new_host:new_port existing_host:existing_port
+
+2、reshard一些数据过去
+16384
+resharding的意思就是把一部分hash slot从一些node上迁移到另外一些node上
+redis-trib.rb reshard 192.168.31.81:7001
+要把之前3个master上，总共4096个hashslot迁移到新的第四个master上去
+How many slots do you want to move (from 1 to 16384)?
+1000
+
+
+3、添加node作为slave
+
+eshop-cache03
+
+mkdir -p /var/redis/7008
+
+port 7008
+cluster-enabled yes
+cluster-config-file /etc/redis-cluster/node-7008.conf
+cluster-node-timeout 15000
+daemonize	yes
+pidfile		/var/run/redis_7008.pid
+dir 		/var/redis/7008
+logfile /var/log/redis/7008.log
+bind 192.168.31.227
+appendonly yes
+
+redis-trib.rb add-node --slave --master-id c063a2f4fbeb5ea4d0f5e66e187d3b45bcc3e233
+192.168.31.83:7008 192.168.31.81:7001
+
+4、删除node
+(1)先用resharding将数据都移除到其他节点，确保node为空之后，才能执行remove操作
+   redis-trib.rb reshard 192.168.31.81:7001
+(2)redis-trib.rb del-node 192.168.31.81:7001 bd0980a64bef838dfdb98f14d0310b05fc685d67
+   2个是1365，1个是1366
+(3)当你清空了一个master的hashslot时，redis cluster就会自动将其slave挂载到其他master上去
+   这个时候就只要删除掉master就可以了
+1820
+1822
+
+5462/2=2731
+
+
+
