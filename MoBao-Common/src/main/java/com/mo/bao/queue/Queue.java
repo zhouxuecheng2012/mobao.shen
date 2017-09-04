@@ -5,11 +5,11 @@ package com.mo.bao.queue;
  */
 public class Queue<T> {
 
-    volatile T element;
+    volatile T item;
     Queue<T> next;
 
     Queue(T t) {
-        this.element = t;
+        this.item = t;
     }
 
 }
