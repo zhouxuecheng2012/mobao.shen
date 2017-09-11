@@ -8,3 +8,12 @@ f(f(x))=f(x)
 分布式任务分发框架、(4 5)
 全文检索、
 海量数据存储与分布式存储技术 hadoop spark
+
+
+http://mp.weixin.qq.com/s?__biz=MzI5MDEzMzg5Nw==&mid=2660393980&idx=1&sn=4105f9d6608d32bad509bf9d02b97831&chksm=f742411ac035c80ca3b884c3d1d599f291cb4048079e8c86fe7dd0d667683c7c087216eea6d0&mpshare=1&scene=1&srcid=0728A3MqYyac3FWeCLdN46Oj#rd
+微服务架构下的数据一致性保证（一），
+http://mp.weixin.qq.com/s?__biz=MzI5MDEzMzg5Nw==&mid=2660392782&idx=1&sn=d28e43bf6f7cf140eed9fffcf2f29e86&scene=21#wechat_redirect
+微服务架构下的数据一致性保证（二），
+http://mp.weixin.qq.com/s?__biz=MzI5MDEzMzg5Nw==&mid=2660392867&idx=1&sn=7f751483271fbe2b25d103df1eb45977&scene=21#wechat_redirect
+微服务架构下的数据一致性保证（三）
+http://mp.weixin.qq.com/s?__biz=MzI5MDEzMzg5Nw==&mid=2660392948&idx=1&sn=11602f1258af8bbf88322558aa8a2f21&scene=21#wechat_redirect

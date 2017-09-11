@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Eshop-Cache" />
         <module name="MoBao-Akka" />
         <module name="MoBao-Algorithm" />
         <module name="MoBao-Common" />
@@ -39,6 +40,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Eshop-Cache" target="1.8" />
       <module name="MoBao" target="1.8" />
       <module name="MoBao-Akka" target="1.8" />
       <module name="MoBao-Algorithm" target="1.8" />

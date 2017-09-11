@@ -1,0 +1,10 @@
+
+1. LRU
+
+2. LRU-K
+LRU-K需要多维护一个队列，用于记录所有缓存数据被访问的历史
+3. Two queues（2Q）
+
+
+4. Multi Queue（MQ）
+

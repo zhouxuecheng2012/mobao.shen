@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Eshop-Cache/Eshop-Cache.iml" filepath="$PROJECT_DIR$/Eshop-Cache/Eshop-Cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao.iml" filepath="$PROJECT_DIR$/MoBao.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Akka/MoBao-Akka.iml" filepath="$PROJECT_DIR$/MoBao-Akka/MoBao-Akka.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" filepath="$PROJECT_DIR$/MoBao-Algorithm/MoBao-Algorithm.iml" />

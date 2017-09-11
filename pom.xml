@@ -24,6 +24,7 @@
         <module>MoBao-Akka</module>
         <module>MoBao-Inventory</module>
         <module>MoBao-Mina</module>
+        <module>Eshop-Cache</module>
     </modules>
     <name>MoBao Maven Mojo</name>
     <url>http://maven.apache.org</url>
