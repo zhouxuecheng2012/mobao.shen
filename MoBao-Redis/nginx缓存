@@ -1,0 +1,52 @@
+
+分发层+应用层，双层nginx
+
+1:分发层nginx，负责流量分发的逻辑和策略，这个里面它可以根据你自己定义的一些规则，
+比如根据productId去进行hash，然后对后端的nginx数量取模,将某一个商品的访问的请求，
+就固定路由到一个nginx后端服务器上去，保证说只会从redis中获取一次缓存数据，后面全都是走nginx本地缓存了
+
+2:后端的nginx服务器，就称之为应用服务器; 最前端的nginx服务器，被称之为分发服务器
+看似很简单，其实很有用，在实际的生产环境中，可以大幅度提升你的nginx本地缓存这一层的命中率，
+大幅度减少redis后端的压力，提升性能
+
+3;要用lua去写多级缓存架构存取的控制逻辑，在应用层nginx里去写的
+面还要做热点数据的自动降级机制，也是用lua脚本去写降级机制的，在分发层nginx里去写的.
+
+4:因为我们要用nginx+lua去开发，所以会选择用最流行的开源方案，就是用OpenResty
+nginx+lua打包在一起，而且提供了包括redis客户端，mysql客户端，http客户端在内的大量的组件
+我们这一讲是去部署应用层nginx，会采用OpenResty的方式去部署nginx，
+而且会带着大家写一个nginx+lua开发的一个hello world
+
+
+
+
+
+
+
+基于nginx+lua+java完成多级缓存架构的核心业务逻辑
+1、应用nginx的lua脚本接收到请求
+2、获取请求参数中的商品id，以及商品店铺id
+3、根据商品id和商品店铺id，在nginx本地缓存中尝试获取数据
+4、如果在nginx本地缓存中没有获取到数据，那么就到redis分布式缓存中获取数据，如果获取到了数据，
+还要设置到nginx本地缓存中
+但是这里有个问题，建议不要用nginx+lua直接去获取redis数据
+因为openresty没有太好的redis cluster的支持包，
+所以建议是发送http请求到缓存数据生产服务，由该服务提供一个http接口
+缓存数生产服务可以基于redis cluster api从redis中直接获取数据，并返回给nginx
+
+cd /usr/hello/lualib/resty/
+wget https://raw.githubusercontent.com/pintsized/lua-resty-http/master/lib/resty/http_headers.lua
+wget https://raw.githubusercontent.com/pintsized/lua-resty-http/master/lib/resty/http.lua
+
+5、如果缓存数据生产服务没有在redis分布式缓存中没有获取到数据，那么就在自己本地ehcache中获取数据，
+返回数据给nginx，也要设置到nginx本地缓存中
+
+6、如果ehcache本地缓存都没有数据，那么就需要去原始的服务中拉去数据，该服务会从mysql中查询，
+拉去到数据之后，返回给nginx，并重新设置到ehcache和redis中
+这里先不考虑，后面要专门讲解一套分布式缓存重建并发冲突的问题和解决方案
+
+
+7、nginx最终利用获取到的数据，动态渲染网页模板
+
+
+8、将渲染后的网页模板作为http响应，返回给分发层nginx

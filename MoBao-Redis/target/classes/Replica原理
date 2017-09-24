@@ -1,0 +1,24 @@
+数据同步相关的核心机制
+第一次slave连接msater的时候，执行的全量复制，那个过程里面你的一些细节的机制
+（1）master和slave都会维护一个offset
+master会在自身不断累加offset，slave也会在自身不断累加offset
+slave每秒都会上报自己的offset给master，同时master也会保存每个slave的offset
+这个倒不是说特定就用在全量复制的，主要是master和slave都要知道各自的数据的offset，
+才能知道互相之间的数据不一致的情况
+
+（2）backlog
+master node有一个backlog，默认是1MB大小
+master node给slave node复制数据时，也会将数据在backlog中同步写一份
+backlog主要是用来做全量复制中断候的增量复制的
+
+（3）master run id
+info server，可以看到master run id
+如果根据host+ip定位master node，是不靠谱的，如果master node重启或者数据出现了变化，
+那么slave node应该根据不同的run id区分，run id不同就做全量复制
+如果需要不更改run id重启redis，可以使用redis-cli debug reload命令
+989e1052a516255bbbbee25de75847e69d281284
+04c7bd93e325810f60dda9d981e7b6c74ccab90a
+（4）psync
+从节点使用psync从master node进行复制，psync runid offset
+master node会根据自身的情况返回响应信息，可能是FULLRESYNC runid offset触发全量复制，
+可能是CONTINUE触发增量复制

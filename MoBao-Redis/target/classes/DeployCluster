@@ -1,0 +1,90 @@
+redis cluster最最基础的一些知识
+redis cluster: 自动，master+slave复制和读写分离，master+slave高可用和主备切换，
+支持多个master的hash slot支持数据分布式存储
+停止之前所有的实例，包括redis主从和哨兵集群
+
+1、redis cluster的重要配置
+cluster-enabled <yes/no>
+
+cluster-config-file <filename>：这是指定一个文件，供cluster模式下的redis实例将集群状态保存在那里，
+包括集群中其他机器的信息，比如节点的上线和下限，故障转移，不是我们去维护的，给它指定一个文件，让redis自己去维护的
+
+cluster-node-timeout <milliseconds>：节点存活超时时长，超过一定时长，认为节点宕机，
+master宕机的话就会触发主备切换，slave宕机就不会提供服务
+
+2、在三台机器上启动6个redis实例
+(1)在eshop-cache03上部署目录
+/etc/redis（存放redis的配置文件），/var/redis/6379（存放redis的持久化文件）
+
+(2)编写配置文件
+redis cluster集群，要求至少3个master，去组成一个高可用，健壮的分布式的集群，每个master都建议至少给一个slave，
+3个master，3个slave，最少的要求正式环境下，建议都是说在6台机器上去搭建，至少3台机器
+保证，每个master都跟自己的slave不在同一台机器上，如果是6台自然更好，一个master+一个slave就死了
+3台机器去搭建6个redis实例的redis cluster
+mkdir -p /etc/redis-cluster
+mkdir -p /var/log/redis
+mkdir -p /var/redis/7001
+
+port 7001
+cluster-enabled yes
+cluster-config-file /etc/redis-cluster/node-7001.conf
+cluster-node-timeout 15000
+daemonize	yes
+pidfile		/var/run/redis_7001.pid
+dir 		/var/redis/7001
+logfile /var/log/redis/7001.log
+bind 192.168.31.187
+appendonly yes
+
+至少要用3个master节点启动，每个master加一个slave节点，先选择6个节点，启动6个实例
+将上面的配置文件，在/etc/redis下放6个,分别为:7001.conf,7002.conf,7003.conf,7004.conf,7005.conf,7006.conf
+
+
+3、创建集群
+wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
+tar -zxvf ruby-2.3.1.tar.gz
+./configure -prefix=/usr/local/ruby
+make && make install
+cd /usr/local/ruby
+cp bin/ruby /usr/local/bin
+cp bin/gem /usr/local/bin
+
+wget http://rubygems.org/downloads/redis-3.3.0.gem
+gem install -l ./redis-3.3.0.gem
+gem list --check redis gem
+
+cp /usr/local/redis-3.2.8/src/redis-trib.rb /usr/local/bin
+
+redis-trib.rb create --replicas 1 192.168.31.81:7001 192.168.31.81:7002 192.168.31.82:7003 192.168.31.82:7004 192.168.31.83:7005 192.168.31.83:7006
+
+4、读写分离+高可用+多master
+
+1、实验多master写入 -> 海量数据的分布式存储
+jedis cluster api，就可以自动针对多个master进行写入和读取
+2、实验不同master各自的slave读取 -> 读写分离
+(1)在这个redis cluster中，如果你要在slave读取数据，那么需要带上readonly指令，get mykey1
+(2)redis-cli -c启动，就会自动进行各种底层的重定向的操作
+(3)实验redis cluster的读写分离的时候，会发现有一定的限制性，默认情况下，redis cluster的核心的理念，
+   主要是用slave做高可用的，每个master挂一两个slave，主要是做数据的热备，还有master故障时的主备切换，
+   实现高可用的
+(4)redis cluster默认是不支持slave节点读或者写的，跟我们手动基于replication搭建的主从架构不一样的,
+slave node，readonly，get，这个时候才能在slave node进行读取
+(5)redis cluster，主从架构是出来，读写分离，复杂了点，也可以做，jedis客户端，
+   对redis cluster的读写分离支持不太好的
+   默认的话就是读和写都到master上去执行的
+(6)如果你要让最流行的jedis做redis cluster的读写分离的访问，那可能还得自己修改一点jedis的源码，成本比较高
+   要不然你就是自己基于jedis，封装一下，自己做一个redis cluster的读写分离的访问api
+(7)
+3、实验自动故障切换 -> 高可用性
+
+redis-trib.rb check 192.168.31.187:7001
+
+比如把master1，187:7001，杀掉，看看它对应的19:7004能不能自动切换成master，可以自动切换
+
+切换成master后的19:7004，可以直接读取数据
+
+再试着把187:7001给重新启动，恢复过来，自动作为slave挂载到了19:7004上面去
+
+redis-trib.rb
+
+
