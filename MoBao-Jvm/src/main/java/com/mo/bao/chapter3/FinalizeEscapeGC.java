@@ -1,0 +1,46 @@
+package com.mo.bao.chapter3;
+/**
+ * 1:
+ * Created by hadoop on 2017/9/24.
+ */
+public class FinalizeEscapeGC {
+
+    public static FinalizeEscapeGC SAVE_HOOK = null;
+
+    public void isAlive() {
+        System.out.println("yes, i am still alive :)");
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println("finalize method executed!");
+        FinalizeEscapeGC.SAVE_HOOK = this;
+    }
+
+    public static void main(String[] args) throws Throwable {
+        SAVE_HOOK = new FinalizeEscapeGC();
+        SAVE_HOOK = null;
+        System.gc();
+        Thread.sleep(1000);
+
+        if (SAVE_HOOK != null) {
+            SAVE_HOOK.isAlive();
+        } else {
+            System.out.println("no,i am dead :(");
+        }
+
+        SAVE_HOOK = null;000000000000   4i04u034u90g3q490u2 y 0i5yu=9u1q]q4]-   ]-  -
+        System.gc();
+        Thread.sleep(1000);
+
+        if (SAVE_HOOK != null) {
+            SAVE_HOOK.isAlive();
+        } else {
+            System.out.println("no,i am dead :(");
+        }
+
+
+    }
+
+}

@@ -28,6 +28,7 @@
         <module name="MoBao-Common" />
         <module name="MoBao-Concurrent" />
         <module name="MoBao-Inventory" />
+        <module name="MoBao-Jvm" />
         <module name="MoBao-Mina" />
         <module name="MoBao-Model" />
         <module name="MoBao-Redis" />
@@ -47,6 +48,7 @@
       <module name="MoBao-Common" target="1.8" />
       <module name="MoBao-Concurrent" target="1.8" />
       <module name="MoBao-Inventory" target="1.8" />
+      <module name="MoBao-Jvm" target="1.8" />
       <module name="MoBao-Mina" target="1.8" />
       <module name="MoBao-Model" target="1.8" />
       <module name="MoBao-Redis" target="1.8" />

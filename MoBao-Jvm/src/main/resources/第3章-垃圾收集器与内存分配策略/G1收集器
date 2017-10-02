@@ -1,0 +1,6 @@
+Garbage-First G1 面向服务端的垃圾收集器
+G1收集器步骤:
+(1)Initial  Marking
+(2)Concurrent Marking
+(3)Finale Marking
+(4)Live Data Counting And Evacuation
