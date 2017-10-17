@@ -1,0 +1,22 @@
+http://itindex.net/detail/50346-jvm-%E6%96%B0%E7%94%9F%E4%BB%A3-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6
+http://www.importnew.com/8335.html
+(1)HotSpot JVM 又把新生代进一步划分为3个区域：
+一个相对大点的区域，称为”伊甸园区(Eden)”；
+两个相对小点的区域称为”From 幸存区(survivor)”和”To 幸存区(survivor)”。
+
+(2)按照规定,新对象会首先分配在 Eden 中(如果新对象过大，会直接分配在老年代中)。在GC中，
+Eden 中的对象会被移动到survivor中，直至对象满足一定的年纪(定义为熬过GC的次数),会被移动到老年代。
+
+(3)基于大多数新生对象都会在GC中被收回的假设。新生代的GC 使用复制算法。在GC前To 幸存区(survivor)保持清空,
+对象保存在 Eden 和 From 幸存区(survivor)中，GC运行时,Eden中的幸存对象被复制到 To 幸存区(survivor)。
+针对 From 幸存区(survivor)中的幸存对象，会考虑对象年龄,如果年龄没达到阀值(tenuring threshold)，
+对象会被复制到To 幸存区(survivor)。如果达到阀值对象被复制到老年代。复制阶段完成后，
+Eden 和From 幸存区中只保存死对象，可以视为清空。如果在复制过程中To 幸存区被填满了，
+剩余的对象会被复制到老年代中。最后 From 幸存区和 To幸存区会调换下名字，在下次GC时，
+To 幸存区会成为From 幸存区。
+
+(4)-XX:+PrintTenuringDistribution
+指定JVM 在每次新生代GC时，输出幸存区中对象的年龄分布
+
+(5):发生Minor GC之前，虚拟机会检查老年代最大可用的连续空间是否大于新生代所有对象的总空间
+

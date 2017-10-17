@@ -30,7 +30,7 @@ public class FinalizeEscapeGC {
             System.out.println("no,i am dead :(");
         }
 
-        SAVE_HOOK = null;000000000000   4i04u034u90g3q490u2 y 0i5yu=9u1q]q4]-   ]-  -
+        SAVE_HOOK = null;
         System.gc();
         Thread.sleep(1000);
 

@@ -1,0 +1,18 @@
+http://blog.csdn.net/kobejayandy/article/details/8496663
+
+
+-XX:+PringGCDetails 打印gc详细信息
+-XX:+PrintGCTimeStamps 带有距离JVM开始运行的时间戳
+
+-XX:+PrintGCApplicationStoppedTime
+-XX:+PrintGCApplicationConcurrentTime
+针对高延迟问题调优HotSpot VM时，下面两个命令行选项特别有用，通过它们可以获得应用程序由于执行
+VM安全操作而阻塞的时间以及两个安全点操作之间应用程序运行的时间。
+
+-Xloggc:指定gc日志存放文件（不指定则控制台打印）
+
+gceasy
+
+推荐一个分析gc日志的网址：http://gceasy.io/
+只要上传日志文件就能够给出好多有用的分析数据出来。感觉还是很好用的。
+后面还会根据这个网站的日志分析做出性能调优。

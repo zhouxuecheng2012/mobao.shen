@@ -1,6 +1,23 @@
+Domain-Driven Design
 Garbage-First G1 面向服务端的垃圾收集器
-G1收集器步骤:
+1:并行和并发
+多核+并发的方式让Java程序继续执行
+2:分代收集
+3:空间整合
+(1)整体是标记-清除,局部是复制
+4:可预测的停顿
+Region划分内存空间和有优先级的区域回收
+
+1:Remembered Set避免全堆扫描
+Region-> Remembered Set
+
+2;G1收集器步骤:
 (1)Initial  Marking
+Mark GC Roots能直接关联的对象，修改TAMS(Next Top at Mark Start)的值，能在正确可用的Region中
+创建对象，停顿线程.
 (2)Concurrent Marking
-(3)Finale Marking
+GC Roots开始对堆中对象进行可达性分析，找出存活的对象。
+(3)Final Marking
+
 (4)Live Data Counting And Evacuation
+

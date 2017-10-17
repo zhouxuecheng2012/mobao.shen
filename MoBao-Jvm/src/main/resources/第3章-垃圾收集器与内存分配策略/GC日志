@@ -1,0 +1,39 @@
+
+DefNewGeneration是default new generation
+ParNewGeneration是parallel new generation
+
+http://hllvm.group.iteye.com/group/topic/37095
+http://hllvm.group.iteye.com/group/topic/37763
+
+PSYoungGen:Eden+Survivor+Survivor 8:1:1分配
+内存的分配担保(Handle Promotion)
+
+[GC (System.gc()) [PSYoungGen: 13328K->808K(29696K)] 13328K->816K(98304K), 0.0320110 secs]
+[Times: user=0.03 sys=0.00, real=0.03 secs]
+GC前
+
+[Full GC (System.gc()) [PSYoungGen: 808K->0K(29696K)] [ParOldGen: 8K->744K(68608K)] 816K->744K(98304K),
+[Metaspace: 3059K->3059K(1056768K)], 0.0109621 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+
+Heap
+ PSYoungGen      total 29696K, used 939K [0x00000000fdf00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 25600K, 3% used [0x00000000fdf00000,0x00000000fdfeacf0,0x00000000ff800000)
+  from space 4096K, 0% used [0x00000000ff800000,0x00000000ff800000,0x00000000ffc00000)
+  to   space 4096K, 0% used [0x00000000ffc00000,0x00000000ffc00000,0x0000000100000000)
+ ParOldGen       total 68608K, used 744K [0x00000000f9c00000, 0x00000000fdf00000, 0x00000000fdf00000)
+  object space 68608K, 1% used [0x00000000f9c00000,0x00000000f9cba398,0x00000000fdf00000)
+ Metaspace       used 3083K, capacity 4494K, committed 4864K, reserved 1056768K
+  class space    used 331K, capacity 386K, committed 512K, reserved 1048576K
+
+1：新生代命名
+Serial            DefNew
+ParNew            ParNew
+Parallel-Scavenge PSYoungGen
+老年代
+
+2:[Times: user=0.03 sys=0.00, real=0.03 secs]
+user:用户态消耗的cpu时间
+sys:内核态消耗的cpu时间
+real:操作从开始到结束所经历过的墙钟时间(Wall Clock Time)
+
+

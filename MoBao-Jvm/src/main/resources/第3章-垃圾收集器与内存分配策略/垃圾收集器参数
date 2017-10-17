@@ -1,0 +1,9 @@
+-XX:+UseAdaptiveSizePolicy
+1:指定新生代大小 -Xmn
+2:-XX:SurvivorRatio
+3:晋升老年代对象大小
+-XX:PretenureSizeThreshold
+
+
+
+-XX:+UseG1GC

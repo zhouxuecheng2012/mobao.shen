@@ -1,0 +1,27 @@
+GC日志
+线程快照(threaddump/javacore文件)
+堆转储快照(heapdump/hprof文件)
+
+1:jps:JVM Process Status Tool,显示系统内所有的HotSpot虚拟机进程
+jps -v
+jps -l
+
+2:jstat:JVM Statistics Monitoring Tool 用于收集HotSpot虚拟机各方面的运行数据
+显示本地或者远程虚拟机进行中的类装载、内存、垃圾收集、JIT编译等运行数据
+jstat -gcutil vmid interval count
+
+3:jinfo:Configuration Info for Java 显示虚拟机配置信息
+jinfo -v
+
+4:jmap:Memory Map for Java,生成虚拟机的内存转储快照(heapdump文件)
+(1)堆转储快照(heapdump)
+(2)查询finalize执行队列
+(3)java堆和永久代 空间使用率和使用的收集器类型等
+jmap -dump:format=b,file=idea.bin pid
+jmap -dump:live,format=b,file=idea.bin pid
+
+5:jhat:JVM Heap Analysis Tool,(JVM Heap Dump Browser用于分析heapdump文件),
+会建立一个Http/Html服务器,让用户在浏览器上查看分析结果
+
+6:jstack:Stack Trace for Java 显示虚拟机的线程快照
+
