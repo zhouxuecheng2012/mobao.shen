@@ -1,0 +1,25 @@
+Java HotSpot(TM) 64-Bit Server VM (25.25-b02) for windows-amd64 JRE (1.8.0_25-b18), built on Oct  7 2014 14:25:37 by "java_re" with MS VC++ 10.0 (VS2010)
+Memory: 4k page, physical 7972784k(4908020k free), swap 15943708k(12553644k free)
+CommandLine flags: -XX:InitialHeapSize=20971520 -XX:InitialTenuringThreshold=1 -XX:MaxHeapSize=20971520 -XX:MaxNewSize=10485760 -XX:MaxTenuringThreshold=1 -XX:NewSize=10485760 -XX:+PrintGC -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintReferenceGC -XX:SurvivorRatio=8 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:-UseLargePagesIndividualAllocation -XX:+UseSerialGC 
+
+2017-10-18T07:07:31.465+0800: 0.219: [GC (Allocation Failure) 0.219:
+[DefNew
+0.224: [SoftReference, 0 refs, 0.0000411 secs]
+0.224: [WeakReference, 3 refs, 0.0000115 secs]
+0.224: [FinalReference, 19 refs, 0.0000257 secs]
+0.224: [PhantomReference, 0 refs, 0.0000107 secs]
+0.224: [JNI Weak Reference, 0.0000154 secs]:
+6155K->1002K(9216K), 0.0048467 secs] 6155K->5098K(19456K), 0.0050097 secs]
+[Times: user=0.01 sys=0.00, real=0.02 secs]
+2017-10-18T07:07:31.481+0800: 0.224: Total time for which application threads were stopped: 0.0052218 seconds
+2017-10-18T07:07:31.481+0800: 0.227: [GC (Allocation Failure) 0.227: [DefNew0.228: [SoftReference, 0 refs, 0.0000329 secs]0.228: [WeakReference, 0 refs, 0.0000107 secs]0.228: [FinalReference, 0 refs, 0.0000103 secs]0.228: [PhantomReference, 0 refs, 0.0000141 secs]0.229: [JNI Weak Reference, 0.0000103 secs]: 5344K->3K(9216K), 0.0018636 secs] 9440K->5096K(19456K), 0.0019051 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+2017-10-18T07:07:31.481+0800: 0.229: Total time for which application threads were stopped: 0.0021112 seconds
+Heap
+ def new generation   total 9216K, used 4234K [0x00000000fec00000, 0x00000000ff600000, 0x00000000ff600000)
+  eden space 8192K,  51% used [0x00000000fec00000, 0x00000000ff021ed0, 0x00000000ff400000)
+  from space 1024K,   0% used [0x00000000ff400000, 0x00000000ff400d28, 0x00000000ff500000)
+  to   space 1024K,   0% used [0x00000000ff500000, 0x00000000ff500000, 0x00000000ff600000)
+ tenured generation   total 10240K, used 5093K [0x00000000ff600000, 0x0000000100000000, 0x0000000100000000)
+   the space 10240K,  49% used [0x00000000ff600000, 0x00000000ffaf94e0, 0x00000000ffaf9600, 0x0000000100000000)
+ Metaspace       used 3165K, capacity 4494K, committed 4864K, reserved 1056768K
+  class space    used 340K, capacity 386K, committed 512K, reserved 1048576K
