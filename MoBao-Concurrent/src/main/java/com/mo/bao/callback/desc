@@ -11,3 +11,34 @@ https://www.jianshu.com/p/0b4b59966276
 
 轻松把玩HttpAsyncClient之模拟post请求示例
 http://blog.csdn.net/xiaoxian8023/article/details/49949813
+
+简化异步编程的复杂性，
+提供了函数式编程的能力，
+可以通过回调的方式处理计算结果，
+并且提供了转换和组合CompletableFuture的方法。
+
+http://colobu.com/2016/02/29/Java-CompletableFuture/#参考文档
+1:转换
+public <U> CompletableFuture<U> 	thenApply(Function<? super T,? extends U> fn)
+public <U> CompletableFuture<U> 	thenApplyAsync(Function<? super T,? extends U> fn)
+public <U> CompletableFuture<U> 	thenApplyAsync(Function<? super T,? extends U> fn, Executor executor)
+
+这一组函数的功能是当原来的CompletableFuture计算完后，将结果传递给函数fn，
+将fn的结果作为新的CompletableFuture计算结果。因此它的功能相当于将CompletableFuture<T>转换成CompletableFuture<U>。
+不以Async结尾的方法由原来的线程计算，以Async结尾的方法由默认的线程池ForkJoinPool.commonPool()或者指定的线程池executor运行。
+
+
+ublic CompletableFuture<Void> 	thenAccept(Consumer<? super T> action)
+public CompletableFuture<Void> 	thenAcceptAsync(Consumer<? super T> action)
+public CompletableFuture<Void> 	thenAcceptAsync(Consumer<? super T> action, Executor executor)
+只对结果执行Action,而不返回新的计算值，因此计算值为Void:
+
+thenAcceptBoth以及相关方法提供了类似的功能，当两个CompletionStage都正常完成计算的时候，就会执行提供的action，它用来组合另外一个异步的结果。
+
+2:组合
+辅助方法 allOf 和 anyOf
+allOf方法是当所有的CompletableFuture都执行完后执行计算。
+
+anyOf方法是当任意一个CompletableFuture执行完后就会执行计算，计算的结果相同。
+
+https://www.jianshu.com/u/d3f1e12064a5

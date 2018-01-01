@@ -10,6 +10,7 @@ import org.apache.http.nio.protocol.HttpAsyncRequestProducer;
 import org.apache.http.nio.protocol.HttpAsyncResponseConsumer;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by hadoop on 2017/12/27.
@@ -17,30 +18,12 @@ import java.util.concurrent.CompletableFuture;
  */
 public class AsyncCallbackTest {
 
-    private static HttpAsyncClient httpAsyncClient;
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-    public static CompletableFuture<String> getHttpData(String url) {
-        CompletableFuture asyncFuture = new CompletableFuture();
-        HttpAsyncRequestProducer producer = HttpAsyncMethods.create(new HttpPost(url));
-        HttpAsyncResponseConsumer consumer = new BasicAsyncResponseConsumer();
-        FutureCallback callback = new FutureCallback<HttpResponse>() {
-            @Override
-            public void completed(HttpResponse response) {
-                asyncFuture.complete(response);
-            }
+        MyService service = new MyService();
 
-            @Override
-            public void failed(Exception e) {
-                asyncFuture.completeExceptionally(e);
-            }
-
-            @Override
-            public void cancelled() {
-                asyncFuture.cancel(true);
-            }
-        };
-        httpAsyncClient.execute(producer, consumer, callback);
-        return asyncFuture;
+        CompletableFuture<String> future = service.getHttpData("http://www.jd.com");
+        String result = future.get();
     }
 
 }
